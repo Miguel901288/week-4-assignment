@@ -9,9 +9,11 @@ import java.util.Map;
 
 @Service
 public class CustomerService {
+    private int nextId;
     private final Map<Integer, Customer> customers;
     public CustomerService() {
         this.customers = new HashMap<>();
+        this.nextId = 1;
     }
 
     public ArrayList<Customer> getCustomers() {
@@ -20,6 +22,13 @@ public class CustomerService {
 
     public Customer getCustomer(int id) {
         return customers.get(id);
+    }
+
+    public Customer addCustomer(Customer customer){
+        int id = nextId++;
+        customer.setId(id);
+        customers.put(id, customer);
+        return customer;
     }
 
     public Customer updateCustomer(int id, Customer customer) {
