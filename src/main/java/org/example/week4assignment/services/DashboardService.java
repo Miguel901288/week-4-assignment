@@ -2,7 +2,9 @@ package org.example.week4assignment.services;
 
 import org.example.week4assignment.models.Appointment;
 import org.example.week4assignment.models.Ticket;
+import org.springframework.stereotype.Service;
 
+@Service
 public class DashboardService {
     CustomerService customerService;
     AppointmentService appointmentService;
