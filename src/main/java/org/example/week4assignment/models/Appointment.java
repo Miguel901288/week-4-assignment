@@ -9,6 +9,21 @@ public class Appointment {
     String type; // Would be enum but types are not specified
     String status; // Would also be enum
 
+    public Appointment(int id, int customerId, Date dateTime, String type, String status) {
+        this.id = id;
+        this.customerId = customerId;
+        this.dateTime = dateTime;
+        this.type = type;
+        this.status = status;
+    }
+    public Appointment(int customerId, Date dateTime, String type, String status) {
+        this.id = 0;
+        this.customerId = customerId;
+        this.dateTime = dateTime;
+        this.type = type;
+        this.status = status;
+    }
+
     public int getId() {
         return id;
     }

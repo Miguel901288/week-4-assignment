@@ -16,6 +16,14 @@ public class Ticket {
         this.assignedTo = assignedTo;
         this.status = status;
     }
+    public Ticket(String title, String description, String priority, String assignedTo, String status) {
+        this.id = 0;
+        this.title = title;
+        this.description = description;
+        this.priority = priority;
+        this.assignedTo = assignedTo;
+        this.status = status;
+    }
 
 
     public int getId() {

@@ -6,8 +6,18 @@ public class Customer{
     private String email;
     private String phoneNumber;
 
-    public Customer(int id, String fullName, String email, String phoneNumber) {
+    public Customer(String fullName, String email, String phoneNumber) {
+        this.id = 0;
+        this.fullName = fullName;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+    }
 
+    public Customer(int id, String fullName, String email, String phoneNumber) {
+        this.id = id;
+        this.fullName = fullName;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
     }
 
     public int getId() {
