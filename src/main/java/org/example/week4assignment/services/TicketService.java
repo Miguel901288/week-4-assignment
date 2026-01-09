@@ -21,9 +21,11 @@ public class TicketService {
         nextId = 1;
     }
 
-    public List<Ticket> getTickets(String status) {
-        if (status == null)
-            return new ArrayList<>(tickets.values());
+    public List<Ticket> getTickets() {
+        return new ArrayList<>(tickets.values());
+    }
+
+    public List<Ticket> getTicketsByStatus(String status) {
         ArrayList<Ticket> result = new ArrayList<>();
         for (Ticket ticket : tickets.values()) {
             if (ticket.getStatus().equals(status)) {
@@ -31,10 +33,6 @@ public class TicketService {
             }
         }
         return result;
-    }
-
-    public List<Ticket> getTicketsByStatus(String status) {
-
     }
 
 

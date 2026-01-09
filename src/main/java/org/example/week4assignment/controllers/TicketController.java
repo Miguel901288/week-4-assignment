@@ -19,7 +19,8 @@ public class TicketController {
     }
     @GetMapping
     public List<Ticket> getTickets(@RequestParam String status) {
-        return ticketService.getTickets(status);
+        return (status == null) ?
+                ticketService.getTickets() : ticketService.getTicketsByStatus(status);
     }
 
     public Ticket createTicket(Ticket ticket) {
