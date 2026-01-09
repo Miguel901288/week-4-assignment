@@ -1,5 +1,6 @@
 package org.example.week4assignment.services;
 
+import org.example.week4assignment.exceptions.InvalidAppointmentException;
 import org.example.week4assignment.models.Appointment;
 import org.example.week4assignment.models.Customer;
 import org.springframework.stereotype.Service;
@@ -31,7 +32,10 @@ public class AppointmentService {
         return result;
     }
 
-    public Appointment createAppointment(Appointment appointment) {
+    public Appointment createAppointment(Appointment appointment) throws InvalidAppointmentException {
+        if (appointment.getDateTime() == null){
+            throw new InvalidAppointmentException("Invalid date");
+        }
         appointment.setId(nextId++);
         appointments.put(appointment.getId(), appointment);
         return appointment;

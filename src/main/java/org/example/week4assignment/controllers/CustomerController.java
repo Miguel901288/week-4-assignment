@@ -33,6 +33,7 @@ public class CustomerController {
     @ExceptionHandler(CustomerNotFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public void customerNotFound(CustomerNotFoundException e) {
+        System.err.println(e.getMessage());
     }
 
     @PostMapping

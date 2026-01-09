@@ -1,8 +1,11 @@
 package org.example.week4assignment.controllers;
 
+import org.example.week4assignment.exceptions.CustomerNotFoundException;
+import org.example.week4assignment.exceptions.InvalidAppointmentException;
 import org.example.week4assignment.models.Appointment;
 import org.example.week4assignment.services.AppointmentService;
 import org.example.week4assignment.services.CustomerService;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -23,8 +26,14 @@ public class AppointmentController {
         return appointmentService.getAppointments();
     }
 
-    public Appointment createAppointment(Appointment appointment) {
+    @PostMapping
+    public Appointment createAppointment(Appointment appointment) throws InvalidAppointmentException {
         return appointmentService.createAppointment(appointment);
+    }
+    @ExceptionHandler(InvalidAppointmentException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public void customerNotFound(InvalidAppointmentException e) {
+        System.err.println(e.getMessage());
     }
 
     @GetMapping("/{id}")
