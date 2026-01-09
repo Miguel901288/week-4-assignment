@@ -1,5 +1,6 @@
 package org.example.week4assignment.services;
 
+import org.example.week4assignment.exceptions.CustomerNotFoundException;
 import org.example.week4assignment.models.Customer;
 import org.springframework.stereotype.Service;
 
@@ -20,7 +21,10 @@ public class CustomerService {
         return new ArrayList<>(customers.values());
     }
 
-    public Customer getCustomer(int id) {
+    public Customer getCustomer(int id) throws CustomerNotFoundException {
+        Customer customer = customers.get(id);
+        if (customer == null)
+            throw new CustomerNotFoundException("Customer with id " + id + " not found");
         return customers.get(id);
     }
 

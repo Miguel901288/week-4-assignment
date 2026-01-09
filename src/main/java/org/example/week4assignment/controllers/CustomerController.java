@@ -1,5 +1,6 @@
 package org.example.week4assignment.controllers;
 
+import org.example.week4assignment.exceptions.CustomerNotFoundException;
 import org.example.week4assignment.models.Customer;
 import org.example.week4assignment.services.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +25,11 @@ public class CustomerController {
 
     @GetMapping("/{id}")
     public Customer getCustomer(@PathVariable int id){
-        return customerService.getCustomer(id);
+        try {
+            return customerService.getCustomer(id);
+        } catch (CustomerNotFoundException e) {
+            return null;
+        }
     }
 
     @PostMapping
