@@ -4,6 +4,8 @@ import org.example.week4assignment.exceptions.CustomerNotFoundException;
 import org.example.week4assignment.models.Customer;
 import org.example.week4assignment.services.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -25,11 +27,12 @@ public class CustomerController {
 
     @GetMapping("/{id}")
     public Customer getCustomer(@PathVariable int id){
-        try {
-            return customerService.getCustomer(id);
-        } catch (CustomerNotFoundException e) {
-            return null;
-        }
+        return customerService.getCustomer(id);
+    }
+
+    @ExceptionHandler(CustomerNotFoundException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public void customerNotFound(CustomerNotFoundException e) {
     }
 
     @PostMapping
