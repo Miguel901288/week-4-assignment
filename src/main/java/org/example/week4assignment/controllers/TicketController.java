@@ -18,7 +18,7 @@ public class TicketController {
         this.ticketService = ticketService;
     }
     @GetMapping
-    public List<Ticket> getTickets(@RequestParam String status) {
+    public List<Ticket> getTickets(@RequestParam(required = false) String status) {
         return (status == null) ?
                 ticketService.getTickets() : ticketService.getTicketsByStatus(status);
     }

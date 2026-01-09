@@ -6,6 +6,13 @@ public class Customer{
     private String email;
     private String phoneNumber;
 
+    public Customer(){
+        this.id = 0;
+        this.fullName = "";
+        this.email = "";
+        this.phoneNumber = "";
+    }
+
     public Customer(String fullName, String email, String phoneNumber) {
         this.id = 0;
         this.fullName = fullName;

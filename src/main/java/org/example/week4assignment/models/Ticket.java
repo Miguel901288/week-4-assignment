@@ -8,6 +8,8 @@ public class Ticket {
     private String assignedTo;
     private String status;
 
+    public Ticket(){}
+
     public Ticket(int id, String title, String description, String priority, String assignedTo, String status) {
         this.id = id;
         this.title = title;

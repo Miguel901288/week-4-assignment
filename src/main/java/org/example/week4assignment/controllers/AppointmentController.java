@@ -16,7 +16,7 @@ public class AppointmentController {
         this.appointmentService = appointmentService;
     }
     @GetMapping
-    public List<Appointment> getAppointments(@RequestParam String id) {
+    public List<Appointment> getAppointments(@RequestParam(required = false) String id) {
         if (id != null){
             return appointmentService.getAppointmentsByCustomer(Integer.parseInt(id));
         }
